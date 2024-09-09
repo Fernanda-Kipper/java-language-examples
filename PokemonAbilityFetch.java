@@ -9,11 +9,12 @@ public class PokemonAbilityFetch {
         this.pokemonName = pokemonName;
     }
 
-    public void fetch() {
+    public String fetch() {
         try {
             String apiUrl = "https://pokeapi.co/api/v2/pokemon/";
             String response = httpClient.get(apiUrl + pokemonName);
             printPokemonAbilities(response, pokemonName);
+            return response.substring(0, 10);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
